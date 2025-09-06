@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+chai aur tweet
+{% endblock %}
+
+{% block content %}
+<div>
+<h1 class= "text-center  mt-4"></h1>
+
+{% comment %} <div class="position-relative p-4 border border-secondary rounded-3 mt-4" style="height:200px"> {% endcomment %}
+   
+
+{% comment %} </div> {% endcomment %}
+    <div class="container row gap-3">
+    {% for tweet in tweets %}
+    <div class="card" style="width: 18rem;">
+        <img src="{{tweet.photo.url}}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{tweet.user.username}}</h5>
+            <p class="card-text">{{tweet.text}}</p>
+            {% if tweet.user == user %}
+            <a href="{% url 'tweet_edit' tweet.id %}" class="btn btn-primary">Edit</a>
+            <a href="{% url 'tweet_delete'  tweet.id %}" class="btn btn-primary">Delete</a>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+ <button class="btn btn-primary posotion-fixed bottom-0 end-0 m-3" onclick="location.href='{% url 'tweet_create' %}'"> +create </button>
+        
+{% endblock %}

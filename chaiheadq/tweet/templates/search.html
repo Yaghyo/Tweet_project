@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %}
+ search Result
+{% endblock %}
+
+{% block content %}
+<div class = "card-body" text-color =" white">
+  {% if tweets %}
+  <ul>
+    {% for Tweet in tweets %}
+         {% comment %} <img src="{{tweet.photo.url}}" class="card-img-top" alt="..."> {% endcomment %}
+        <li> {{ tweet.user.username}}:{{tweet.text}} </li>
+     {% endfor %} 
+   </ul>    
+  {% else %}
+   <p>no tweet found</p>
+</div>
+   
+  {% endif %}
+{% endblock %}
